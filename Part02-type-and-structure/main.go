@@ -204,6 +204,35 @@ func main() {
 	// convert string to int
 	strConvertInt, err := strconv.Atoi("-42")
 	fmt.Println(err == nil, strConvertInt, reflect.TypeOf(strConvertInt)) // output: true -42 int
+
+	// Type assertion
+	// poodle.Bark() // undefined error
+	p, ok := poodle.(Dog)
+	fmt.Println(ok, p.Bark()) // output: true Bolt: Woff woff!
+
+	// Value types
+	valueType := "value"
+	valueTypeCopy := valueType
+	valueType = "value changed"
+	fmt.Println(valueType)     // output: value
+	fmt.Println(valueTypeCopy) // output: value changed
+
+	// Reference types
+	referenceType := []string{"dog", "cat"}
+	referenceTypeCopy := referenceType
+	referenceTypeCopy[1] = "fish"
+	fmt.Println(referenceType)     // output: dog fish
+	fmt.Println(referenceTypeCopy) // output: dog fish
+
+	// comparing value types
+	arr1 := [2]int{1, 2}
+	arr2 := [2]int{1, 2}
+	fmt.Println(arr1 == arr2) // output: true
+
+	// comparing reference types
+	account3 := Account{BSB: 123456}
+	account4 := Account{BSB: 123456}
+	fmt.Println(account1 == account2) // output: false
 }
 
 // Composite type: struct
@@ -232,4 +261,8 @@ type Dog struct {
 
 func (d Dog) Eat() string {
 	return fmt.Sprintf("%s eats meat", d.Name)
+}
+
+func (d Dog) Bark() string {
+	return fmt.Sprintf("%s: Woff woff!", d.Name)
 }
