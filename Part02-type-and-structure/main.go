@@ -190,7 +190,9 @@ func main() {
 	poodle = Dog{Name: "Bolt"}
 	fmt.Println(poodle.Eat())
 
+	// ***************
 	// Type conversion
+	// ***************
 	convertInt := 1
 	convertFloat := float32(convertInt)
 	fmt.Println(convertFloat, reflect.TypeOf(convertFloat))
@@ -205,10 +207,17 @@ func main() {
 	strConvertInt, err := strconv.Atoi("-42")
 	fmt.Println(err == nil, strConvertInt, reflect.TypeOf(strConvertInt)) // output: true -42 int
 
+	// ***************
 	// Type assertion
+	// ***************
+
 	// poodle.Bark() // undefined error
 	p, ok := poodle.(Dog)
 	fmt.Println(ok, p.Bark()) // output: true Bolt: Woff woff!
+
+	// ***************
+	// Value types vs reference types
+	// ***************
 
 	// Value types
 	valueType := "value"
@@ -230,9 +239,9 @@ func main() {
 	fmt.Println(arr1 == arr2) // output: true
 
 	// comparing reference types
-	account3 := Account{BSB: 123456}
-	account4 := Account{BSB: 123456}
-	fmt.Println(account1 == account2) // output: false
+	dog1 := Dog{Name: "bolt"}
+	dog2 := Dog{Name: "bolt"}
+	fmt.Println(dog1 == dog2) // output: false
 }
 
 // Composite type: struct
