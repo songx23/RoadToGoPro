@@ -143,7 +143,7 @@ func main() {
 	// Composite type: struct
 	// declare an account
 	var account1 Account
-	account1.BSB = 123456
+	account1.BankIdentifierCode = 123456
 	account1.AccountNumber = 12345678
 	account1.AccountType = "Joint Account"
 	account1.Owners = []Owner{
@@ -164,9 +164,9 @@ func main() {
 
 	// another way to declare an account inline
 	account2 := Account{
-		BSB:           123456,
-		AccountNumber: 12345678,
-		AccountType:   "Joint Account",
+		BankIdentifierCode: 123456,
+		AccountNumber:      12345678,
+		AccountType:        "Joint Account",
 		Owners: []Owner{
 			{
 				FirstName:   "Jon",
@@ -213,7 +213,7 @@ func main() {
 
 	// poodle.Bark() // undefined error
 	p, ok := poodle.(Dog)
-	fmt.Println(ok, p.Bark()) // output: true Bolt: Woff woff!
+	fmt.Println(ok, p.Bark()) // output: true Bolt: Woof Woof!
 
 	// ***************
 	// Value types vs reference types
@@ -252,10 +252,10 @@ type Owner struct {
 	Email       string
 }
 type Account struct {
-	BSB           int
-	AccountNumber int64
-	AccountType   string
-	Owners        []Owner
+	BankIdentifierCode int
+	AccountNumber      int64
+	AccountType        string
+	Owners             []Owner
 }
 
 // Composite type: interface
@@ -273,5 +273,5 @@ func (d Dog) Eat() string {
 }
 
 func (d Dog) Bark() string {
-	return fmt.Sprintf("%s: Woff woff!", d.Name)
+	return fmt.Sprintf("%s: Woof Woof!", d.Name)
 }
