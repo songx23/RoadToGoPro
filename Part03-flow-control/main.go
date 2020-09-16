@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -42,7 +43,7 @@ func main() {
 		fmt.Println("This is not a valid location on Earth. Choosing somewhere else... ", anotherPlace)
 	} else {
 		newPlace := "New Asgard"
-		fmt.Println(newPlace, " is a valid location on Earth.")
+		fmt.Println(newPlace, "is a valid location on Earth.")
 	}
 	// errors as the variables are out of scope
 	// fmt.Println(anotherPlace) // undefined: anotherPlace
@@ -52,12 +53,13 @@ func main() {
 	numText := "one"
 	switch numText {
 	case "one":
-		fmt.Println(numText, " = ", 1)
+		fmt.Println(numText, "=", 1)
 	case "two":
-		fmt.Println(numText, " = ", 2)
+		fmt.Println(numText, "=", 2)
 	default:
-		fmt.Println(numText, " is not 1 or 2")
+		fmt.Println(numText, "is not 1 or 2")
 	}
+	//output: one = 1
 
 	// generic switch statement
 	switch {
@@ -68,4 +70,106 @@ func main() {
 	default:
 		fmt.Println("Catching all other scenarios")
 	}
+	// output: depends on when you execute this program
+
+	// for loop: basic form
+	lockdownLevels := []string{"stage1", "stage2", "stage3", "stage4"}
+	for i := 0; i < len(lockdownLevels); i++ {
+		switch {
+		case strings.Contains(lockdownLevels[i], "1"):
+			fmt.Println("In", lockdownLevels[i], "lockdown. Life is great.")
+		case strings.Contains(lockdownLevels[i], "2"):
+			fmt.Println("In", lockdownLevels[i], "lockdown. Life is good.")
+		case strings.Contains(lockdownLevels[i], "3"):
+			fmt.Println("In", lockdownLevels[i], "lockdown. Life is not too bad.")
+		case strings.Contains(lockdownLevels[i], "4"):
+			fmt.Println("In", lockdownLevels[i], "lockdown. Life is not too good.")
+		default:
+			fmt.Println("Unknown lockdown stage")
+		}
+	}
+
+	// for loop: while form
+	whileIndex := 0
+	for whileIndex < len(lockdownLevels) {
+		switch {
+		case strings.Contains(lockdownLevels[whileIndex], "1"):
+			fmt.Println("In", lockdownLevels[whileIndex], "lockdown. Life is great.")
+		case strings.Contains(lockdownLevels[whileIndex], "2"):
+			fmt.Println("In", lockdownLevels[whileIndex], "lockdown. Life is good.")
+		case strings.Contains(lockdownLevels[whileIndex], "3"):
+			fmt.Println("In", lockdownLevels[whileIndex], "lockdown. Life is not too bad.")
+		case strings.Contains(lockdownLevels[whileIndex], "4"):
+			fmt.Println("In", lockdownLevels[whileIndex], "lockdown. Life is not too good.")
+		default:
+			fmt.Println("Unknown lockdown stage")
+		}
+		whileIndex++
+	}
+
+	// for loop: endless loop
+	go func() {
+		for {
+			fmt.Println("I'm an endless loop.")
+			time.Sleep(1 * time.Second)
+		}
+	}()
+
+	time.Sleep(5 * time.Second)
+	// output: 5 rows of I'm an endless loop.
+
+	// for loop: range operator
+	for index, value := range lockdownLevels {
+		fmt.Print("Index ", index, ": ")
+		switch {
+		case strings.Contains(value, "1"):
+			fmt.Println("In", value, "lockdown. Life is great.")
+		case strings.Contains(value, "2"):
+			fmt.Println("In", value, "lockdown. Life is good.")
+		case strings.Contains(value, "3"):
+			fmt.Println("In", value, "lockdown. Life is not too bad.")
+		case strings.Contains(value, "4"):
+			fmt.Println("In", value, "lockdown. Life is not too good.")
+		default:
+			fmt.Println("Unknown lockdown stage")
+		}
+	}
+
+	// for loop: range operator over map
+	postcodes := map[int]string{
+		3000: "Melbourne",
+		2000: "Sydney",
+		6000: "Perth",
+	}
+	for key, value := range postcodes {
+		fmt.Println("Postcode:", key, "Name:", value)
+	}
+
+	// for loop: range operator over string
+	helloString := "Hello!"
+	for _, u := range helloString {
+		// using fmt package to format the output
+		fmt.Printf("Unicode: %U; Character: %c\n", u, u)
+	}
+
+	// continue
+	for key, value := range postcodes {
+		if key == 6000 {
+			continue // skip the following code for current iteration
+		}
+		fmt.Printf("Postcode: %d Name: %s\n", key, value)
+	}
+	// output:
+	//  Postcode: 2000 Name: Sydney
+	//  Postcode: 3000 Name: Melbourne
+
+	// break
+	for key, value := range postcodes {
+		if key == 6000 {
+			break // skip the entire loop
+		}
+		fmt.Printf("Postcode: %d Name: %s\n", key, value)
+	}
+	// output:
+	//  Postcode: 2000 Name: Sydney
 }
