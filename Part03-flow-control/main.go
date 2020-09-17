@@ -172,4 +172,98 @@ func main() {
 	}
 	// output:
 	//  Postcode: 2000 Name: Sydney
+
+	// goto & label
+	fmt.Println("First line of code.")
+	goto SKIP
+	fmt.Println("Second line of code.") // this line is skipped
+SKIP:
+	fmt.Println("Third line of code.")
+	// output:
+	//  First line of code.
+	//  Third line of code.
+
+	// defer
+	dText := "defer #1"
+	defer fmt.Println(dText)
+	dText = "defer #2"
+	defer fmt.Println(dText)
+	// do something else
+	dText = "not deferred"
+	fmt.Println(dText)
+
+	// basic usage of formatter
+	whoami := "formatter"
+	fmt.Printf("Hello, I'm your helpful %s\n", whoami) // output: Hello, I'm your helpful formatter
+
+	// format verbs: boolean
+	booleanTrue := true
+	fmt.Printf("Boolean in text: %t\n", booleanTrue) // output: Boolean in text: true
+
+	// format verbs: numbers
+	smallInt := 111
+	smallFloat := 111.11
+	largeFloat := 111111111111111.0
+	fmt.Printf(`Binary number: %b
+Base 10 number: %d
+Unicode: %U
+Decimal point: %f
+Scientific notationL %e
+`, smallInt, smallInt, smallInt, smallFloat, largeFloat)
+	// output:
+	//  Binary number: 1101111
+	//  Base 10 number: 111
+	//  Unicode: U+006F
+	//  Decimal point: 111.110000
+	//  Scientific notationL 1.111111e+14
+
+	// format verbs: string
+	simpleString := "I am a happy formatter"
+	quotedString := `"I am a happy double quoted formatter"`
+	fmt.Printf(`Plain string: %s
+Quoted string: %q
+Safely escaped quoted string: %q
+`, simpleString, simpleString, quotedString)
+	// output:
+	//  Plain string: I am a happy formatter
+	//  Quoted string: "I am a happy formatter"
+	//  Safely escaped quoted string: "\"I am a happy double quoted formatter\""
+
+	// format verbs: general
+	simpleSlice := []string{"1", "2", "3", "Go"}
+	simpleMap := map[string]string{
+		"%v":  "value in default format",
+		"%+v": "value + field names",
+	}
+	simpleStruct := Person{
+		Name:   "TesterUser",
+		Gender: "Secret",
+		DoB:    time.Date(1970, 1, 1, 0, 0, 0, 0, loc),
+		Age:    50,
+		Hobby:  []string{"Go", "Programming", "Break stuff", "Push buttons"},
+	}
+	fmt.Printf(`Default format of slice: %v
+Default format of map: %v
+Default format of struct: %v
+struct with field names: %+v
+Go-syntax representation of slice: %#v
+Go-syntax representation of map: %#v
+Go-syntax representation of struct: %#v
+`, simpleSlice, simpleMap, simpleStruct, simpleStruct, simpleSlice, simpleMap, simpleStruct)
+	// output:
+	//  Default format of slice: [1 2 3 Go]
+	//  Default format of map: map[%+v:value + field names %v:value in default format]
+	//  Default format of struct: {TesterUser Secret 1970-01-01 00:00:00 +1000 AEST 50 [Go Programming Break stuff Push buttons]}
+	//  struct with field names: {Name:TesterUser Gender:Secret DoB:1970-01-01 00:00:00 +1000 AEST Age:50 Hobby:[Go Programming Break stuff Push buttons]}
+	//  Go-syntax representation of slice: []string{"1", "2", "3", "Go"}
+	//  Go-syntax representation of map: map[string]string{"%+v":"value + field names", "%v":"value in default format"}
+	//  Go-syntax representation of struct: main.Person{Name:"TesterUser", Gender:"Secret", DoB:time.Time{wall:0x0, ext:62135560800, loc:(*time.Location)(0xc0000261e0)}, Age:50, Hobby:[]string{"Go", "Programming", "Break stuff", "Push buttons"}}
+}
+
+type Person struct {
+	Name   string
+	Gender string
+	DoB    time.Time
+	Age    int
+	Hobby  []string
 }
