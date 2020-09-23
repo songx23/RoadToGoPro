@@ -9,7 +9,7 @@ import (
 func main() {
 	// if...else... statement example
 	grocery := []string{"onion", "milk"}
-	if len(grocery) < 2 {
+	if len(grocery) <= 2 {
 		fmt.Println("Are you sure you have included everything you need in the shopping list?")
 	} else if len(grocery) < 20 {
 		fmt.Println("Looks good. Time to go to the supermarket.")
