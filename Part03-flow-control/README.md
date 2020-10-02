@@ -1,6 +1,6 @@
 # Road to Go Pro — Flow control
 
-Please read the tutorial on [Medium](https://medium.com/@songx).
+Please read the tutorial on [Medium](https://levelup.gitconnected.com/road-to-go-pro-flow-control-dfcc7b9a5395).
 
 ## Run the example code
 
