@@ -1,0 +1,3 @@
+# github.com/torden/go-strutil v0.1.5
+## explicit
+github.com/torden/go-strutil
