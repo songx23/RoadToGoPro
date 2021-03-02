@@ -1,6 +1,6 @@
 # Road to Go Pro — Packages and Modules
 
-Please read the tutorial on [Medium]().
+Please read the tutorial on [Medium](https://levelup.gitconnected.com/road-to-go-pro-packages-modules-5b8aebe6a4e4).
 
 ## Run the example code
 

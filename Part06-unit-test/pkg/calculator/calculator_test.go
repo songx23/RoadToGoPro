@@ -1,6 +1,7 @@
 package calculator
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -53,5 +54,30 @@ func TestTableDrivenTestPlus(t *testing.T) {
 	for _, tc := range tests {
 		actual := Plus(tc.input1, tc.input2)
 		assert.Equal(t, tc.outcome, actual)
+	}
+}
+
+func TestTableDrivenTestDivide(t *testing.T) {
+	// move struct declaration inline
+	tests := []struct {
+		name    string
+		input1  float64
+		input2  float64
+		outcome float64
+		err     error
+	}{
+		{name: "Divided by non-zero value", input1: 5, input2: 2, outcome: 2.5, err: nil},
+		{name: "Divided by zero", input1: 5, input2: 0, outcome: 0, err: errors.New("cannot divide by 0")},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			actual, err := Divide(tc.input1, tc.input2)
+			if tc.err != nil {
+				assert.Error(t, err)
+				assert.Equal(t, tc.err, err)
+				return
+			}
+			assert.Equal(t, tc.outcome, actual)
+		})
 	}
 }
