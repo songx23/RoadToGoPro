@@ -1,6 +1,6 @@
 # Road to Go Pro — Pointers and functions
 
-Please read the tutorial on [Medium](https://medium.com/@songx).
+Please read the tutorial on [Medium](https://levelup.gitconnected.com/road-to-go-pro-pointer-functions-1b4f18b4fdb0).
 
 ## Run the example code
 
