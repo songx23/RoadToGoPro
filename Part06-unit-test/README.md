@@ -1,6 +1,6 @@
 # Road to Go Pro — Unit Test
 
-Please read the tutorial on [Medium]().
+Please read the tutorial on [Medium](https://medium.com/digio-australia/road-to-go-pro-unit-test-69591a553412).
 
 ## Go test 
 
