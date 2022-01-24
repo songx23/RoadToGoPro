@@ -35,6 +35,6 @@ func hardCalculation(input int) {
 func hardCalculationAsync(wg *sync.WaitGroup, input int) {
 	// pretending I'm working on super hard math problems
 	defer wg.Done()
-	time.Sleep(1 * time.Second)
+	time.Sleep(10 * time.Second)
 	fmt.Printf("math problem solved for input: %d.\n", input)
 }
