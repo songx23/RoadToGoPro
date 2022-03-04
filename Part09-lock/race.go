@@ -5,8 +5,8 @@ import (
 	"sync"
 )
 
-// sumUp has two writing process which access the same non-thread-safe resource
-func sumUp(start, end int) int {
+// sumUpWithRace has two writing process which access the same non-thread-safe resource
+func sumUpWithRace(start, end int) int {
 	sum := 0
 
 	wg := sync.WaitGroup{}

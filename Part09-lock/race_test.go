@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func Test_sumUp(t *testing.T) {
+func Test_sumUpWithRace(t *testing.T) {
 	type args struct {
 		start int
 		end   int
@@ -23,8 +23,8 @@ func Test_sumUp(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := sumUp(tt.args.start, tt.args.end); got != tt.want {
-				t.Errorf("sumUp() = %v, want %v", got, tt.want)
+			if got := sumUpWithRace(tt.args.start, tt.args.end); got != tt.want {
+				t.Errorf("sumUpWithRace() = %v, want %v", got, tt.want)
 			}
 		})
 	}
