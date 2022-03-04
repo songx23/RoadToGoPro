@@ -1,6 +1,6 @@
 # Road to Go Pro — Channel and Benchmark test
 
-Please read the tutorial on [Medium](https://medium.com/@songx).
+Please read the tutorial on [Medium](https://levelup.gitconnected.com/road-to-go-pro-async-part-2-channels-12645a160f73).
 
 ## Run the example code
 
