@@ -73,3 +73,59 @@ func TestSliceContains_String(t *testing.T) {
 		})
 	}
 }
+
+//func TestSliceContains_Magic(t *testing.T) {
+//	type args struct {
+//		src []Magic
+//		trg Magic
+//	}
+//	tests := []struct {
+//		name string
+//		args args
+//		want bool
+//	}{
+//		{
+//			name: "magic contains",
+//			args: args{
+//				src: []Magic{
+//					{"Protecting spell", []string{"Expecto", "Patronum"}},
+//					{"Killing spell", []string{"Avada", "Kedavra"}},
+//					{"Flying spell", []string{"Wingardium", "Leviosa"}},
+//				},
+//				trg: Magic{"Protecting spell", []string{"Expecto", "Patronum"}},
+//			},
+//			want: true,
+//		},
+//		{
+//			name: "magic does not contain",
+//			args: args{
+//				src: []Magic{
+//					{"Protecting spell", []string{"Expecto", "Patronum"}},
+//					{"Killing spell", []string{"Avada", "Kedavra"}},
+//					{"Flying spell", []string{"Wingardium", "Leviosa"}},
+//				},
+//				trg: Magic{"Petrol price is crazy", []string{"Expensive", "Petroleum"}},
+//			},
+//			want: false,
+//		},
+//	}
+//	for _, tt := range tests {
+//		t.Run(tt.name, func(t *testing.T) {
+//			if got := SliceContains(tt.args.src, tt.args.trg); got != tt.want {
+//				t.Errorf("SliceContains() = %v, want %v", got, tt.want)
+//			}
+//		})
+//	}
+//}
+
+func BenchmarkSliceContains_String(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		SliceContains([]string{"1", "2", "3"}, "3")
+	}
+}
+
+func BenchmarkSliceContains_Int(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		SliceContains([]int{1, 2, 3}, 3)
+	}
+}

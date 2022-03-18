@@ -53,3 +53,9 @@ func TestIntSliceContains(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkIntSliceContains(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		IntSliceContains([]int{1, 2, 3}, 3)
+	}
+}
