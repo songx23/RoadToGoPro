@@ -51,9 +51,11 @@ func sumUpWithRWLock(start, end int) int {
 		rwMux.RUnlock()
 	}
 
-	wg.Add(3)
+	wg.Add(4)
 
-	go addUp(start, end)
+	middlePoint := end / 2
+	go addUp(start, middlePoint)
+	go addUp(middlePoint+1, end)
 	go inspect(1)
 	go inspect(2)
 

@@ -1,6 +1,6 @@
 # Road to Go Pro — Locks
 
-Please read the tutorial on [Medium](https://medium.com/@songx).
+Please read the tutorial on [Medium](https://levelup.gitconnected.com/road-to-go-pro-async-part-3-locks-8bf60c476b12).
 
 ## Code with race conditions
 
