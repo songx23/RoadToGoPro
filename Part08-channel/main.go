@@ -46,14 +46,12 @@ func (w *worker) start() {
 
 func (w *worker) startWorker() {
 	for {
-		select {
-		case param, ok := <-w.queue:
-			if !ok {
-				fmt.Println("Batch worker is stopping...")
-				return
-			}
-			w.hardCalculation(param)
+		param, ok := <-w.queue
+		if !ok {
+			fmt.Println("Batch worker is stopping...")
+			return
 		}
+		w.hardCalculation(param)
 	}
 }
 
