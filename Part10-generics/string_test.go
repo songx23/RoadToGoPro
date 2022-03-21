@@ -56,6 +56,6 @@ func TestStringSliceContains(t *testing.T) {
 
 func BenchmarkStringSliceContains(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		StringSliceContains([]string{"a", "b", "c"}, "c")
+		StringSliceContains([]string{"1", "2", "3"}, "3")
 	}
 }
